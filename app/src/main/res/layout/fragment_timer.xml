@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.TimerFragment">
+
+    <data>
+
+        <variable
+            name="timerViewModel"
+            type="com.belinda.pomofocus.fragments.TimerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/focusConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.karthi.roundedprogressbar.RoundedCircularProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            app:rcp_progress="0"
+            app:rcp_backgroundColor="@color/progress_background"
+            app:rcp_progressColor="@color/progress_color"
+            app:rcp_strokeWidth="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/focusCountTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{String.valueOf(timerViewModel.counter)}"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@id/progress_bar"
+            app:layout_constraintEnd_toEndOf="@id/progress_bar"
+            app:layout_constraintStart_toStartOf="@id/progress_bar"
+            app:layout_constraintTop_toTopOf="@id/progress_bar" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:onClick="@{() -> timerViewModel.cancelTimer()}"
+            android:text="Cancel"
+            app:layout_constraintEnd_toStartOf="@+id/StartPauseButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+
+        <Button
+            android:id="@+id/StartPauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginLeft="150dp"
+            android:onClick="@{() -> timerViewModel.changeButtonState()}"
+            android:text="@{timerViewModel.buttonText}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progress_bar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

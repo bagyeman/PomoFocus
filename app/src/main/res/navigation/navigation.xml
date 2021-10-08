@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/timerFragment">
+
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.belinda.pomofocus.fragments.TimerFragment"
+        android:label="fragment_focus_timer"
+        tools:layout="@layout/fragment_timer" >
+        <action
+            android:id="@+id/action_timerFragment_to_breakTimerFragment"
+            app:destination="@id/breakTimerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/breakTimerFragment"
+        android:name="com.belinda.pomofocus.fragments.BreakTimerFragment"
+        android:label="fragment_break_timer"
+        tools:layout="@layout/fragment_break_timer" />
+</navigation>
